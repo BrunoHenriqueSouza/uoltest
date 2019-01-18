@@ -179,4 +179,6 @@ Plano de publicacao
 
     Próximos passos:
         - Implementar os testes automatizados dos serviços do cliente.
+        - Alterar o serviço que busca todos os clientes para retornar o resultado paginado.
+        - Melhorar os logs da aplicação.
         
