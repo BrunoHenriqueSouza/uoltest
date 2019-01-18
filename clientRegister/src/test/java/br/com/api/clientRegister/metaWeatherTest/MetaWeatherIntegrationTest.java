@@ -3,6 +3,10 @@ package br.com.api.clientRegister.metaWeatherTest;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -99,7 +103,7 @@ public class MetaWeatherIntegrationTest {
 		MetaWeatherConsolidatedWeatherResponseVO[] consolidated_weather = new MetaWeatherConsolidatedWeatherResponseVO[1];
 		MetaWeatherConsolidatedWeatherResponseVO metaWeatherConsolidatedWeatherResponseVO = new MetaWeatherConsolidatedWeatherResponseVO();
 		
-		metaWeatherConsolidatedWeatherResponseVO.setApplicable_date("2019-01-17");
+		metaWeatherConsolidatedWeatherResponseVO.setApplicable_date(LocalDate.now().toString());
 		metaWeatherConsolidatedWeatherResponseVO.setMax_temp(15.166666666666666);
 		metaWeatherConsolidatedWeatherResponseVO.setMin_temp(8.963333333333333);
 		metaWeatherConsolidatedWeatherResponseVO.setWeather_state_name("Light Rain");

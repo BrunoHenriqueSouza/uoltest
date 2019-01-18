@@ -91,7 +91,7 @@ public class MetaWeatherIntegrationImpl implements MetaWeatherIntegration{
 	}
 
 	private LocalDate getDateByString(String applicable_date) throws ParseException {
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyy/MM/dd");
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDate dateFormated = LocalDate.parse(applicable_date.replace("-", "/"), format);
 		
 		return dateFormated;
