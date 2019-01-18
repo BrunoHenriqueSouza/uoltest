@@ -1,0 +1,89 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TestUol",
+		"_postman_id": "32addd77-38f8-5c1d-f428-8c129b5da6d1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consult client by id",
+			"request": {
+				"url": "localhost:8080/client/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Consult all clients",
+			"request": {
+				"url": "localhost:8080/client/all",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Insert client",
+			"request": {
+				"url": "localhost:8080/client/new",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-FORWARDED-FOR",
+						"value": "8.8.8.8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"client\": {\n\t    \"name\": \"Joao da Silva\",\n\t    \"age\": 25\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update client",
+			"request": {
+				"url": "localhost:8080/client/update",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"clients\": {\n        \"clientId\": 1,\n        \"name\": \"Joao da Silva Santos\",\n        \"age\": 25,\n        \"weather\": {\n            \"minTemp\": \"8.796666666666667\",\n            \"maxTemp\": \"15.729999999999999\"\n        }\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Remove client by id",
+			"request": {
+				"url": "localhost:8080/client/remove/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
