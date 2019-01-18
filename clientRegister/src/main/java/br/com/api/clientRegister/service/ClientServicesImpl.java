@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,8 @@ import br.com.api.clientRegister.vo.WeatherVO;
 @Service
 public class ClientServicesImpl implements ClientServices {
 
+	private static Logger logger = LogManager.getLogger(ClientServicesImpl.class);
+	
 	@Autowired
 	private ClientRepository clientRepository;
 	
@@ -54,7 +58,7 @@ public class ClientServicesImpl implements ClientServices {
 		}catch(Exception e) {
 			StringBuilder error = new StringBuilder(e.getMessage())
 									  .append("O cliente sera salvo, mas sem as informacoes de clima.");
-			System.out.println(error);
+			logger.error(error);
 		}
 		
 		return clientMapper.mapperClientEntityToClientVo(
@@ -102,6 +106,7 @@ public class ClientServicesImpl implements ClientServices {
 		try {
 			return (ClientVO) clientMapper.mapperClientEntityToClientVo(clientRepository.findById(clientId).get());
 		}catch(Exception e) {
+			logger.error("Nao foi possivel recuperar o cliente utilizando o id " + clientId);
 			throw new DataNotFoundException("Client", "id", clientId);
 		}
 
@@ -124,6 +129,7 @@ public class ClientServicesImpl implements ClientServices {
 		try {
 			clientRepository.deleteById(clientId);
 		}catch(Exception e) {
+			logger.error("Nao foi possivel remover o cliente utilizando o id: " + clientId);
 			throw new DataNotFoundException("Client", "id", clientId);
 		}
 	}
