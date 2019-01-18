@@ -63,7 +63,7 @@ Plano de publicacao
             422 caso ocorra algum erro
 
     Testando a Aplicação
-        Nesse ponto deixarei abaixo um conjuto de chamadas que podem ser executadas no console, mas também há um projeto do postman nos diretórios do projeto para facilitar os testes e deixa-los mais visuais.
+        Nesse ponto deixarei abaixo um conjuto de chamadas que podem ser executadas no console, mas também há um projeto do postman no diretório *PostmanProject* do projeto para facilitar os testes e deixa-los mais visuais.
 
         Teste 1 -   Consultando todos os clientes cadastrados:
         
