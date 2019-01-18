@@ -1,6 +1,9 @@
 Plano de publicacao
-
-    Todo o procedimento foi feito considerando uma maquina rodando o Ubuntu como sistema operacional.
+    
+    Sobre o projeto:
+    Todo o procedimento foi feito considerando uma máquina rodando o Ubuntu como sistema operacional.
+    O serviço foi desenvolvido na linguagem JAVA e utilizando o SpringBoot.
+    Para armazenar os dados, utilizamos o MySql. Optei por ele por ser um banco de dados muito utilizado, com uma grande comunidade e muita documentação disponível.
 
     Pre-requisitos:
         Ter o Java 8 instalado
@@ -157,4 +160,19 @@ Plano de publicacao
 
         Aplicação:
             - Para parar sua execução basta encerrar o processo do java.
+            
+   
 
+    Instruções para publicação no ambiente de produção:
+
+        Disponibilizar inicialmente, três dockers com sistema operacional Ubuntu.
+            - Uma máquina terá a configuração de 4gb de memória e 20gb de espaço em disco.
+                - Esta máquina deverá conter o mysql 5.7 instalado e já deve ter a configuração de backup dos dados.
+                - Deverá estar configurada toda a rede para que as aplicações consigam acessar o banco.
+
+            - Duas máquinas terão uma configuração de 2gb de memória e 6gb de espaço em disco.
+                - Esta máquina será onde publicaremos o nosso serviço, então já deve ter instalado o java 8 e o maven.
+                - Também deve-se mapear os ips que proverão o acesso aos serviços da aplicação.
+                - Deve conter o mapeamento do banco de dados.
+                - Essas máquinas deverão ser registradas em um load balancer e caso a quantidade de acessos seja muito alta, deveremos subir mais instâncias do nosso serviço para subir a demanda. 
+                  Quando os acessos foram normalizados, voltamos ao estado inicial de dois conteiners.
