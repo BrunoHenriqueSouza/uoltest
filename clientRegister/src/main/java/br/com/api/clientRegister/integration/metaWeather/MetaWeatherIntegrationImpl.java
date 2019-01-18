@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpServerErrorException;
@@ -17,6 +19,8 @@ import br.com.api.clientRegister.vo.WeatherVO;
 @Component
 public class MetaWeatherIntegrationImpl implements MetaWeatherIntegration{
 
+	private static Logger logger = LogManager.getLogger(MetaWeatherIntegrationImpl.class);
+	
 	private static final String SEARCH_LOCATION_BY_LATLONG_SERVICE = "https://www.metaweather.com/api/location/search/?lattlong=";
 	private static final String GET_WEATHER_BY_WOEID_SERVICE = "https://www.metaweather.com/api/location/{woeid}/";
 	private static final String KEY_WOEID = "{woeid}";
@@ -43,7 +47,12 @@ public class MetaWeatherIntegrationImpl implements MetaWeatherIntegration{
 				}
 			}
 		}catch(HttpServerErrorException e) {
-			e.printStackTrace();
+			StringBuilder error = new StringBuilder("Erro ao recuperar os dados de clima para a localizacao: \n")
+									  .append("lat -> ").append(latitude).append("\n")
+									  .append("long -> ").append(longitude).append("\n")
+									  .append(e);
+									  
+			logger.error(error.toString());
 		}
 		return weatherVO;
 	}

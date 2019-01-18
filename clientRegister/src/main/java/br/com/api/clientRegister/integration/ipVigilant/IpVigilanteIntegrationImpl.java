@@ -1,5 +1,7 @@
 package br.com.api.clientRegister.integration.ipVigilant;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -10,6 +12,8 @@ import br.com.api.clientRegister.vo.GeoLocationVO;
 
 @Component
 public class IpVigilanteIntegrationImpl implements IpVigilanteIntegration{
+	
+	private static Logger logger = LogManager.getLogger(IpVigilanteIntegrationImpl.class);
 	
 	private static final String SERVICE_URL = "https://ipvigilante.com/json/";
 	private static final String STATUS_SUCCESS = "success";
@@ -36,7 +40,7 @@ public class IpVigilanteIntegrationImpl implements IpVigilanteIntegration{
 				geoLocationVO.setSubdivision_2_name(response.getData().getSubdivision_2_name());
 			}
 		}catch(HttpClientErrorException e) {
-			e.printStackTrace();
+			logger.error("Nao foi possivel recuperar a localizacao com o ip informado.\n", e);
 		}
 		
 		return geoLocationVO;
